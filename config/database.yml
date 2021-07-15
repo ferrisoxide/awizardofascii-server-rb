@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # For details on connection pooling, see Rails configuration guide
+  # https://guides.rubyonrails.org/configuring.html#database-pooling
+  pool: <%= ENV.fetch("AWOA_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: awizardofascii_development
+test:
+  <<: *default
+  database: awizardofascii_test
+
+production:
+  <<: *default
+  database: awizardofascii_production
+  username: evoke_travel_api
+  password: <%= ENV['AWIZARDOFASCII_DATABASE_PASSWORD'] %>
